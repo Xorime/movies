@@ -67,6 +67,5 @@ Future<void> setupInitializers(Environment flavor) async {
   WidgetsFlutterBinding.ensureInitialized();
 
   await GetStorage.init();
-
   await dotenv.load(fileName: flavor == Environment.development ? ".dev.env" : ".env");
 }

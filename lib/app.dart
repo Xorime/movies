@@ -28,7 +28,7 @@ class App extends StatelessWidget {
       child: Stack(
         alignment: Alignment.center,
         children: [
-          const MainApp(
+          MainApp(
             home: Root(),
           ),
           if (flavor == Environment.development)
@@ -77,13 +77,8 @@ class MainApp extends StatelessWidget {
         ),
         home: home,
         routes: {
-          '/root': (context) => const Root(),
+          '/root': (context) => Root(),
         },
-
-        // getPages: AppPages.routes.toList(),
-        getPages: [
-          GetPage(name: '/root', page: () => const Root()),
-        ],
       ),
     );
   }

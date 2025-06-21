@@ -1,0 +1,10 @@
+com.example.movies-development-0 /Users/sorimexorime/Documents/GitHub/movies/android/build/generated/res/pngs/development/debug
+com.example.movies-development-1 /Users/sorimexorime/Documents/GitHub/movies/android/build/generated/res/resValues/development/debug
+com.example.movies-packageDevelopmentDebugResources-2 /Users/sorimexorime/Documents/GitHub/movies/android/build/intermediates/incremental/developmentDebug/packageDevelopmentDebugResources/merged.dir
+com.example.movies-packageDevelopmentDebugResources-3 /Users/sorimexorime/Documents/GitHub/movies/android/build/intermediates/incremental/developmentDebug/packageDevelopmentDebugResources/stripped.dir
+com.example.movies-development-4 /Users/sorimexorime/Documents/GitHub/movies/android/build/intermediates/merged-not-compiled-resources/development/debug
+com.example.movies-developmentDebug-5 /Users/sorimexorime/Documents/GitHub/movies/android/build/intermediates/merged_res/developmentDebug/mergeDevelopmentDebugResources
+com.example.movies-debug-6 /Users/sorimexorime/Documents/GitHub/movies/android/src/debug/res
+com.example.movies-development-7 /Users/sorimexorime/Documents/GitHub/movies/android/src/development/res
+com.example.movies-developmentDebug-8 /Users/sorimexorime/Documents/GitHub/movies/android/src/developmentDebug/res
+com.example.movies-main-9 /Users/sorimexorime/Documents/GitHub/movies/android/src/main/res

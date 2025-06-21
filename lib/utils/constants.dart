@@ -18,6 +18,8 @@ const kPadding24 = 24.0;
 const kPadding32 = 32.0;
 const kPadding36 = 36.0;
 
+const kSizeBottomBarHeight = 80.0;
+
 // Styles
 const headline1 = TextStyle(fontSize: 24, color: kColorDarkTeal);
 const headline2 = TextStyle(fontSize: 18, color: kColorDarkTeal);
@@ -35,6 +37,13 @@ const kImageDevFlag = 'assets/dev-flag.png';
 
 const kPopupSuccess = 'success';
 const kPopupFailed = 'failed';
+
+// constants
+
+const kIndexHome = 0;
+const kIndexFavourite = 1;
+
+//enums
 
 enum ControllerState {
   firstLoad,
