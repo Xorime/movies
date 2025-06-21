@@ -40,8 +40,17 @@ const kPopupFailed = 'failed';
 
 // constants
 
+const kSizeMinButtonWidth = 100.0;
+const kSizeMinButtonHeight = 45.0;
+
+const kSizeRadiusButton = 25.0;
+
 const kIndexHome = 0;
 const kIndexFavourite = 1;
+
+const kSizeLoaderBoxWidth = 200.0;
+const kSizeLoaderBoxHeight = 50.0;
+const kSizeLoaderBoxRadius = 10.0;
 
 //enums
 

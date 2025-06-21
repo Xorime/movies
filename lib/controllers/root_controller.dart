@@ -17,20 +17,21 @@ class RootController extends BaseControllers {
   @override
   void onInit() {
     super.onInit();
-    load();
+    checkForToken();
   }
 
-  @override
-  Future<void> load() async {
-    super.load();
-    await api.getPlayingMovies(controllers: this);
+  Future<void> checkForToken() async {
+    String token = await GetStorage().read(storageToken) ?? '';
+
+    if (token != '') {
+      isLoggedIn.value = true;
+    }
   }
 
   Future<void> onTapLogin() async {
     String? token = dotenv.env['ACCESS_TOKEN'];
 
     isLoggedIn.value = true;
-
     await GetStorage().write(storageToken, token);
   }
 

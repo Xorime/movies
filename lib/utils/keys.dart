@@ -1,2 +1,2 @@
 const storageToken = 'storage_token';
-const storageTemp = 'storage_temp';
+const storageFavourite = 'storage_favourite';
