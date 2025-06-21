@@ -3,6 +3,7 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:movies/controllers/root_controller.dart';
+import 'package:movies/screens/favourite_list.dart';
 import 'package:movies/screens/now_playing_movies.dart';
 import 'package:movies/utils/constants.dart';
 import 'package:movies/utils/extensions.dart';
@@ -23,11 +24,7 @@ class _RootState extends State<Root> with TickerProviderStateMixin {
     super.initState();
     _controller.screens = [
       NowPlayingMovies(),
-      Container(
-        width: Get.width,
-        height: Get.height,
-        color: Colors.teal,
-      ),
+      FavouriteList(),
     ];
     _controller.tabController = TabController(
       initialIndex: _controller.index.value,

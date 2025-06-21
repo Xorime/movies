@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:movies/base/base_controllers.dart';
+import 'package:movies/controllers/favourite_list_controller.dart';
 import 'package:movies/controllers/root_controller.dart';
 import 'package:movies/models/now_playing_movies_model.dart';
 import 'package:movies/utils/keys.dart';
@@ -61,8 +62,6 @@ class NowPlayingMoviesController extends BaseControllers {
   void _parseData(List data) async {
     List favouriteList = await GetStorage().read(storageFavourite) ?? [];
 
-    print(favouriteList);
-
     for (Map json in data) {
       NowPlayingMoviesModel model = NowPlayingMoviesModel.fromJson(json);
 
@@ -103,5 +102,10 @@ class NowPlayingMoviesController extends BaseControllers {
     }
 
     await GetStorage().write(storageFavourite, favouriteList);
+
+    if (Get.isRegistered<FavouriteListController>()) {
+      FavouriteListController _tempController = Get.find<FavouriteListController>();
+      _tempController.parseData();
+    }
   }
 }

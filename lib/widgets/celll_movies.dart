@@ -17,6 +17,7 @@ class CelllMovies extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    print(model.posterPath);
     return Stack(
       children: [
         Img(
@@ -56,7 +57,7 @@ class CelllMovies extends StatelessWidget {
       () => IconButton(
         onPressed: () => _mainController.onTapFavourite(model: model, isCurrentFavourite: model.isFavourite.value),
         icon: Icon(
-          Icons.star_border,
+          model.isFavourite.value ? Icons.star : Icons.star_border,
           color: model.isFavourite.value ? Colors.yellow : null,
         ),
       ),
