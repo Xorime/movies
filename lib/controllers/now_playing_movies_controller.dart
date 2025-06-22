@@ -3,13 +3,15 @@ import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:movies/base/base_controllers.dart';
 import 'package:movies/controllers/favourite_list_controller.dart';
+import 'package:movies/controllers/movies_detail_controller.dart';
 import 'package:movies/controllers/root_controller.dart';
-import 'package:movies/models/now_playing_movies_model.dart';
+import 'package:movies/models/movies_model.dart';
+import 'package:movies/screens/movies_detail.dart';
 import 'package:movies/utils/keys.dart';
 import 'package:movies/utils/utils.dart';
 
 class NowPlayingMoviesController extends BaseControllers {
-  RxList<NowPlayingMoviesModel> arrData = RxList();
+  RxList<MoviesModel> arrData = RxList();
   int page = 1;
 
   ScrollController scrollController = ScrollController();
@@ -63,7 +65,7 @@ class NowPlayingMoviesController extends BaseControllers {
     List favouriteList = await GetStorage().read(storageFavourite) ?? [];
 
     for (Map json in data) {
-      NowPlayingMoviesModel model = NowPlayingMoviesModel.fromJson(json);
+      MoviesModel model = MoviesModel.fromJson(json);
 
       Map? temp = favouriteList.firstWhereOrNull((e) => e['id'] == model.id);
 
@@ -85,7 +87,7 @@ class NowPlayingMoviesController extends BaseControllers {
     load();
   }
 
-  Future<void> onTapFavourite({required NowPlayingMoviesModel model, required bool isCurrentFavourite}) async {
+  Future<void> onTapFavourite({required MoviesModel model, required bool isCurrentFavourite}) async {
     List favouriteList = await GetStorage().read(storageFavourite) ?? [];
 
     if (isCurrentFavourite) {
@@ -98,6 +100,7 @@ class NowPlayingMoviesController extends BaseControllers {
         'id': model.id,
         'poster_path': model.posterPath,
       });
+
       Utils.popUpSuccess(body: 'Added to favourite list');
     }
 
@@ -107,5 +110,10 @@ class NowPlayingMoviesController extends BaseControllers {
       FavouriteListController _tempController = Get.find<FavouriteListController>();
       _tempController.parseData();
     }
+  }
+
+  Future<void> onTapMovie({required MoviesModel model}) async {
+    await Get.to(() => MoviesDetail(movieID: model.id ?? -1));
+    Get.delete<MoviesDetailController>();
   }
 }

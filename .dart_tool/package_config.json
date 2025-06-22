@@ -188,6 +188,12 @@
       "languageVersion": "3.0"
     },
     {
+      "name": "intl",
+      "rootUri": "file:///Users/sorimexorime/.pub-cache/hosted/pub.dev/intl-0.19.0",
+      "packageUri": "lib/",
+      "languageVersion": "3.0"
+    },
+    {
       "name": "leak_tracker",
       "rootUri": "file:///Users/sorimexorime/.pub-cache/hosted/pub.dev/leak_tracker-10.0.7",
       "packageUri": "lib/",
@@ -494,7 +500,7 @@
       "languageVersion": "3.4"
     }
   ],
-  "generated": "2025-06-21T10:38:45.360446Z",
+  "generated": "2025-06-21T16:24:31.280354Z",
   "generator": "pub",
   "generatorVersion": "3.6.2",
   "flutterRoot": "file:///Users/sorimexorime/fvm/versions/3.27.4",

@@ -2,11 +2,11 @@ import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:movies/base/base_controllers.dart';
 import 'package:movies/controllers/root_controller.dart';
-import 'package:movies/models/now_playing_movies_model.dart';
+import 'package:movies/models/movies_model.dart';
 import 'package:movies/utils/keys.dart';
 
 class FavouriteListController extends BaseControllers {
-  RxList<NowPlayingMoviesModel> favouriteList = RxList();
+  RxList<MoviesModel> favouriteList = RxList();
 
   @override
   void onInit() {
@@ -21,7 +21,7 @@ class FavouriteListController extends BaseControllers {
     List temp = await GetStorage().read(storageFavourite) ?? [];
 
     for (Map json in temp) {
-      NowPlayingMoviesModel model = NowPlayingMoviesModel(
+      MoviesModel model = MoviesModel(
         id: json['id'],
         posterPath: json['poster_path'],
       );

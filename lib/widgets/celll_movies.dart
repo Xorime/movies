@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:movies/controllers/now_playing_movies_controller.dart';
-import 'package:movies/models/now_playing_movies_model.dart';
+import 'package:movies/models/movies_model.dart';
 import 'package:movies/utils/constants.dart';
 import 'package:movies/utils/img.dart';
 
 class CelllMovies extends StatelessWidget {
-  final NowPlayingMoviesModel model;
+  final MoviesModel model;
 
   CelllMovies({
     super.key,
@@ -17,20 +17,22 @@ class CelllMovies extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print(model.posterPath);
-    return Stack(
-      children: [
-        Img(
-          url: 'https://image.tmdb.org/t/p/w500${model.posterPath}',
-        ),
-        Positioned(
-          child: _isAdult(context),
-        ),
-        Positioned(
-          right: 1,
-          child: _isFavourite(),
-        ),
-      ],
+    return GestureDetector(
+      onTap: () => _mainController.onTapMovie(model: model),
+      child: Stack(
+        children: [
+          Img(
+            url: 'https://image.tmdb.org/t/p/w500${model.posterPath}',
+          ),
+          Positioned(
+            child: _isAdult(context),
+          ),
+          Positioned(
+            right: 1,
+            child: _isFavourite(),
+          ),
+        ],
+      ),
     );
   }
 

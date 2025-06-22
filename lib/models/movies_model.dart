@@ -1,6 +1,6 @@
 import 'package:get/get.dart';
 
-class NowPlayingMoviesModel {
+class MoviesModel {
   bool adult = false;
   String? backdropPath;
   List<int>? genreIds;
@@ -17,7 +17,7 @@ class NowPlayingMoviesModel {
   int? voteCount;
   RxBool isFavourite = false.obs;
 
-  NowPlayingMoviesModel({
+  MoviesModel({
     this.adult = false,
     this.backdropPath,
     this.genreIds,
@@ -34,7 +34,7 @@ class NowPlayingMoviesModel {
     this.voteCount,
   });
 
-  NowPlayingMoviesModel.fromJson(Map json) {
+  MoviesModel.fromJson(Map json) {
     adult = json['adult'] ?? false;
     backdropPath = json['backdrop_path'];
     genreIds = json['genre_ids'].cast<int>();

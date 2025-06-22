@@ -5,7 +5,7 @@ import 'package:movies/base/base_controllers.dart';
 String baseUrl = dotenv.env['BASE_URL'] ?? 'google.com';
 
 class Api extends BaseApi {
-  final String _getPlayingNow = baseUrl + 'movie/now_playing';
+  final String _getMovie = baseUrl + 'movie';
 
   Future<void> getPlayingMovies({
     required BaseControllers controllers,
@@ -13,8 +13,14 @@ class Api extends BaseApi {
     required int page,
   }) =>
       apiFetch(
-        url: _getPlayingNow + '?language=$language&page=$page',
+        url: _getMovie + '/now_playing?language=$language&page=$page',
         controller: controllers,
         debug: false,
+      );
+
+  Future<void> getMoviesDetail({required BaseControllers controllers, required int movieID}) => apiFetch(
+        url: _getMovie + '/${movieID}',
+        controller: controllers,
+        debug: true,
       );
 }

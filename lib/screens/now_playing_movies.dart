@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:movies/controllers/now_playing_movies_controller.dart';
 import 'package:movies/controllers/root_controller.dart';
-import 'package:movies/models/now_playing_movies_model.dart';
+import 'package:movies/models/movies_model.dart';
 import 'package:movies/utils/button.dart';
 import 'package:movies/utils/constants.dart';
 import 'package:movies/utils/wgt.dart';
@@ -49,7 +49,7 @@ class NowPlayingMovies extends StatelessWidget {
             ),
             itemCount: _controller.arrData.length,
             itemBuilder: (context, index) {
-              NowPlayingMoviesModel model = _controller.arrData[index];
+              MoviesModel model = _controller.arrData[index];
 
               return CelllMovies(model: model);
             },

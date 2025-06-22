@@ -56,6 +56,7 @@ class _RootState extends State<Root> with TickerProviderStateMixin {
             child: BackdropFilter(
               filter: ImageFilter.blur(sigmaX: 2.0, sigmaY: 2.0),
               child: BottomAppBar(
+                color: kColorPrimaryBlue,
                 height: kSizeBottomBarHeight,
                 elevation: 0.0,
                 child: SafeArea(

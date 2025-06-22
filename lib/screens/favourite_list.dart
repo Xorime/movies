@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:movies/controllers/favourite_list_controller.dart';
 import 'package:movies/controllers/root_controller.dart';
-import 'package:movies/models/now_playing_movies_model.dart';
+import 'package:movies/models/movies_model.dart';
 import 'package:movies/utils/button.dart';
 import 'package:movies/utils/constants.dart';
 import 'package:movies/utils/wgt.dart';
@@ -42,7 +42,7 @@ class FavouriteList extends StatelessWidget {
           ),
           itemCount: _controller.favouriteList.length,
           itemBuilder: (context, index) {
-            NowPlayingMoviesModel model = _controller.favouriteList[index];
+            MoviesModel model = _controller.favouriteList[index];
 
             return CelllMovies(model: model);
           },
