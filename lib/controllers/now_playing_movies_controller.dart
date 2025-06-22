@@ -11,10 +11,12 @@ import 'package:movies/utils/keys.dart';
 import 'package:movies/utils/utils.dart';
 
 class NowPlayingMoviesController extends BaseControllers {
-  RxList<MoviesModel> arrData = RxList();
+  List<MoviesModel> arrData = [];
+  RxList<MoviesModel> arrDataFiltered = RxList();
   int page = 1;
 
   ScrollController scrollController = ScrollController();
+  TextEditingController controllerSearch = TextEditingController();
 
   @override
   void onInit() {
@@ -42,6 +44,7 @@ class NowPlayingMoviesController extends BaseControllers {
 
   Future<void> onRefresh() async {
     arrData.clear();
+    arrDataFiltered.clear();
     page = 1;
     load();
   }
@@ -74,11 +77,29 @@ class NowPlayingMoviesController extends BaseControllers {
       }
 
       arrData.add(model);
+      searchMovie(controllerSearch.text);
     }
   }
 
   void _parsePagination({required int currentPage}) {
     page = currentPage;
+  }
+
+  String? searchMovie(String? val) {
+    arrDataFiltered.clear();
+
+    if (val == null || val == '') {
+      arrDataFiltered.addAll(arrData);
+      return val;
+    }
+
+    for (MoviesModel movies in arrData) {
+      if (movies.title!.toLowerCase().contains(val)) {
+        arrDataFiltered.add(movies);
+      }
+    }
+
+    return val;
   }
 
   void onTapLogin() {

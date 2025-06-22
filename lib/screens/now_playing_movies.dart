@@ -5,6 +5,7 @@ import 'package:movies/controllers/root_controller.dart';
 import 'package:movies/models/movies_model.dart';
 import 'package:movies/utils/button.dart';
 import 'package:movies/utils/constants.dart';
+import 'package:movies/utils/input.dart';
 import 'package:movies/utils/wgt.dart';
 import 'package:movies/widgets/celll_movies.dart';
 
@@ -30,29 +31,52 @@ class NowPlayingMovies extends StatelessWidget {
         return _notLoggedIn();
       }
 
-      if (_controller.arrData.isEmpty) {
-        return _emptyState();
-      }
-
       return RefreshIndicator(
         onRefresh: () => _controller.onRefresh(),
         child: Padding(
           padding: const EdgeInsets.only(bottom: 80),
-          child: GridView.builder(
-            controller: _controller.scrollController,
-            padding: EdgeInsets.symmetric(vertical: kPadding8, horizontal: kPadding16),
-            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 2,
-              mainAxisSpacing: kPadding12,
-              crossAxisSpacing: kPadding12,
-              childAspectRatio: 0.65,
-            ),
-            itemCount: _controller.arrData.length,
-            itemBuilder: (context, index) {
-              MoviesModel model = _controller.arrData[index];
+          child: Column(
+            children: [
+              Container(
+                margin: EdgeInsets.symmetric(horizontal: kPadding16),
+                decoration: BoxDecoration(
+                  color: Colors.black.withValues(alpha: 0.2),
+                  border: Border.all(color: Colors.black),
+                  borderRadius: BorderRadius.circular(kPadding20),
+                ),
+                child: Input(
+                  inputBorder: InputBorder.none,
+                  contentPadding: EdgeInsets.symmetric(horizontal: kPadding12),
+                  controller: _controller.controllerSearch,
+                  hint: 'Search for your movie',
+                  hintStyle: Colors.black.withValues(alpha: 0.5),
+                  onChangeText: (val) => _controller.searchMovie(val),
+                ),
+              ),
+              if (_controller.arrDataFiltered.isEmpty) ...[
+                _emptyState(),
+              ],
+              if (_controller.arrDataFiltered.isNotEmpty) ...[
+                Expanded(
+                  child: GridView.builder(
+                    controller: _controller.scrollController,
+                    padding: EdgeInsets.symmetric(vertical: kPadding8, horizontal: kPadding16),
+                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 2,
+                      mainAxisSpacing: kPadding12,
+                      crossAxisSpacing: kPadding12,
+                      childAspectRatio: 0.65,
+                    ),
+                    itemCount: _controller.arrDataFiltered.length,
+                    itemBuilder: (context, index) {
+                      MoviesModel model = _controller.arrDataFiltered[index];
 
-              return CelllMovies(model: model);
-            },
+                      return CelllMovies(model: model);
+                    },
+                  ),
+                ),
+              ],
+            ],
           ),
         ),
       );
